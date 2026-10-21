@@ -1,10 +1,5 @@
-import time
-import force_sensor
-import motor
 from hub import light_matrix,port,sound
-import color
-import color_sensor
-import runloop
+import color,color_sensor, runloop, motor, force_sensor, time
 def piscar():
     light_matrix.show_image(light_matrix.IMAGE_ARROW_N)
     time.sleep_ms(500)

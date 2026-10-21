@@ -52,7 +52,7 @@ async def main():
             motor_pair.stop(motor_pair.PAIR_1)
             while distancia() <= 50 or toque():
                 await runloop.sleep_ms(50)
-            await motor_pair.move_tank_for_degrees(motor_pair.PAIR_1,360,600,-600)
+            await motor_pair.move_tank_for_degrees(motor_pair.PAIR_1,360,600,-600) #theta, esquerda, direita
 
         else:
             vel = velocidade()

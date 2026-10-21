@@ -18,7 +18,7 @@ def toque():
     return force_sensor.pressed(port.C)
 
 async def noventadireita():
-    await motor_pair.move_tank_for_degrees(motor_pair.PAIR_1,noventagraus,600,-600)
+    await motor_pair.move_tank_for_degrees(motor_pair.PAIR_1,noventagraus,600,-600) #theta , esquerda, direita
 
 async def oito():
     distdeg = cmporrot(40)
@@ -29,14 +29,14 @@ async def oito():
 
 async def caminhada():
     distdeg = cmporrot(30)
-    await motor_pair.move_tank_for_degrees(motor_pair.PAIR_1,distdeg,360,360)
+    await motor_pair.move_tank_for_degrees(motor_pair.PAIR_1,distdeg,360,360) #da para fazer com tank ou motor_pair.move_for_degress(motor_pair.PAIR_1, distdeg, 0, velocidade)
     await motor_pair.move_tank_for_degrees(motor_pair.PAIR_1,distdeg,-360,-360)
 
 async def som_imagem():
     sound.volume(80)
 
     for _ in range(4):
-        await sound.beep(440, 500)
+        await sound.beep(440, 500) #frequencia e tempo
         light_matrix.show_image(light_matrix.IMAGE_HAPPY)
         await runloop.sleep_ms(500)
 
@@ -56,11 +56,11 @@ async def main():
     motor_pair.pair( motor_pair.PAIR_1, port.A, port.B)
 
     while True:
-        motor_pair.move(motor_pair.PAIR_1, 0)
+        motor_pair.move(motor_pair.PAIR_1, 0, 500) #stering e velocidade
         await runloop.until(objetodetectado)
         motor_pair.stop(motor_pair.PAIR_1)
         await noventadireita()
-        motor_pair.move(motor_pair.PAIR_1, 0)
+        motor_pair.move(motor_pair.PAIR_1, 0, 500)
         await runloop.until(cor)
         motor_pair.stop(motor_pair.PAIR_1)
         await oito()

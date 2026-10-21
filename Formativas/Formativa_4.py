@@ -1,5 +1,6 @@
 from hub import port
 import motor_pair, color_sensor, runloop
+
 motor_pair.pair(motor_pair.PAIR_1, port.A, port.B)
 
 async def pid_seguidor_linha():

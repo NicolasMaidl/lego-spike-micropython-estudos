@@ -1,10 +1,7 @@
 from hub import light_matrix,sound
-import time
-
-import runloop
+import runloop, time
 
 async def main():
-    # write your code here
     while True:
         await light_matrix.write("Hi!")
         sound.beep(440,1000,100)

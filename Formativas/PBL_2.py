@@ -107,12 +107,12 @@ async def detectou_saida():
 
 async def resolver_labirinto():
     print("Aguardando acionamento do sensor de toque para iniciar...")
-    while not force_sensor.pressed(PORTA_TOQUE):
+    while not force_sensor.pressed(PORTA_TOQUE):   #pode usar apenas await runloop.until(toque)   , mas deve criar dai uma função toque       def toque():
         await runloop.sleep_ms(50)
 
     print("Partida acionada! Navegando no labirinto...")
 
-    motor.run_to_relative_position(PORTA_TORRE, 0, 400)
+    motor.run_to_relative_position(PORTA_TORRE, 0, 400) #theta e velodiade
     await runloop.sleep_ms(400)
 
     await avancar_uma_celula()
